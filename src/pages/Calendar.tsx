@@ -8,12 +8,19 @@ import { es } from 'date-fns/locale';
 export const Calendar: React.FC = () => {
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   
   const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   const dates = Array.from({ length: daysInMonth }, (_, i) => 
     new Date(currentDate.getFullYear(), currentDate.getMonth(), i + 1)
   );
+
+  const handleDateClick = (date: Date) => {
+    setSelectedDate(date);
+    setModalVisible(true);
+  };
 
   const handlePreviousMonth = () => {
     const previousMonth = subMonths(currentDate, 1);
@@ -108,6 +115,7 @@ export const Calendar: React.FC = () => {
                   className={`md:p-2 rounded-lg ${
                     isToday ? 'ring-2 ring-[#030b08] ring-offset-2' : ''
                   }`}
+                  onClick={() => window.innerWidth < 768 ? handleDateClick(date) : undefined}
                 >
                   <div className="text-sm font-semibold mb-1">{date.getDate()}</div>
                   <div className={`text-xs p-1 rounded ${getWorkoutColor(workout)}`}>
@@ -122,6 +130,18 @@ export const Calendar: React.FC = () => {
           </div>
         </div>
       </div>
+      {modalVisible && selectedDate && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">Detalles del día {selectedDate.getDate()}</h2>
+            <div className="flex flex-col gap-2">
+              <p>Tipo de entrenamiento: {getWorkoutForDate(selectedDate).type}</p>
+              <p>Ejercicio: {getWorkoutForDate(selectedDate).exercise}</p>
+            </div>
+            <button onClick={() => setModalVisible(false)} className="mt-4 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-black transition-colors">Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

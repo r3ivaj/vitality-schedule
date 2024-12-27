@@ -20,8 +20,6 @@ export const getWorkoutForDate = (date: Date): WorkoutDetails | { type: 'Descans
 
 export const getWorkoutSchedule = (date: Date) => {
   return {
-    yesterday: getWorkoutForDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)),
     today: getWorkoutForDate(date),
-    tomorrow: getWorkoutForDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)),
   };
 };

@@ -22,11 +22,11 @@ export const WorkoutCard: React.FC<WorkoutCardProps> = ({ title, workout, opacit
   };
 
   return (
-    <div className={`bg-white rounded-lg shadow-lg p-6 ${opacity}`}>
-      <h3 className="text-lg font-semibold text-gray-700 mb-2">{title}</h3>
-      <div className={`rounded-md p-4 ${getWorkoutStyle(workout.type)}`}>
-        <p className="text-xl font-bold mb-2">{workout.type}</p>
-        <p className="text-sm">{workout.exercise}</p>
+    <div className={`bg-white rounded-lg shadow-lg p-4 md:p-6 ${opacity}`} role="article" aria-label={`Workout for ${title}`}>
+      <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">{title}</h3>
+      <div className={`rounded-md p-3 md:p-4 ${getWorkoutStyle(workout.type)}`}>
+        <p className="text-lg md:text-xl font-bold mb-1 md:mb-2">{workout.type}</p>
+        <p className="text-sm" aria-label={`Exercise: ${workout.exercise}`}>{workout.exercise}</p>
       </div>
     </div>
   );
