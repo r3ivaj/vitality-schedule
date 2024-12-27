@@ -68,7 +68,7 @@ export const Calendar: React.FC = () => {
             <button
               onClick={handlePreviousMonth}
               disabled={isPreviousMonthDisabled}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center gap-2 px-2 py-1 md:px-4 md:py-2 rounded-lg transition-colors ${
                 isPreviousMonthDisabled
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-[#9AC21A] text-white hover:bg-[#8ab118]'
@@ -79,13 +79,13 @@ export const Calendar: React.FC = () => {
             </button>
             <button
               onClick={() => setCurrentDate(today)}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-black transition-colors"
+              className="flex items-center gap-2 px-2 py-1 md:px-4 md:py-2 bg-gray-800 text-white rounded-lg hover:bg-black transition-colors"
             >
               Mes actual
             </button>
             <button
               onClick={handleNextMonth}
-              className="flex items-center gap-2 px-4 py-2 bg-[#9AC21A] text-white rounded-lg hover:bg-[#8ab118] transition-colors"
+              className="flex items-center gap-2 px-2 py-1 md:px-4 md:py-2 bg-[#9AC21A] text-white rounded-lg hover:bg-[#8ab118] transition-colors"
             >
               Siguiente
               <ChevronRight size={20} />

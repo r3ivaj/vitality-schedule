@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-[#9AC21A]">Entrenamientos</h1>
+          <h1 className="md:text-3xl text-2xl font-bold text-[#9AC21A]">Entrenamientos</h1>
           <Link
             to="/calendar"
             className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-black transition-colors"
@@ -22,12 +22,12 @@ export const Home: React.FC = () => {
             Calendario
           </Link>
         </div>
-        <h2 className="text-2xl font-bold text-black mb-6">Vista rápida</h2>
+        <h2 className="md:text-2xl text-xl font-bold text-black mb-6">Vista rápida</h2>
         <div className="grid gap-6 md:grid-cols-2">
           <WorkoutCard title="Hoy" workout={today} isToday={true} />
         </div>
         <div className="mt-8">
-          <h2 className="text-2xl font-bold text-black mb-6">Esta semana</h2>
+          <h2 className="md:text-2xl text-xl font-bold text-black mb-6">Esta semana</h2>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-2">
             {daysOfWeek.map((day) => {
               const date = new Date(
