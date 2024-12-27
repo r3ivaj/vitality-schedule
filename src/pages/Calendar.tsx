@@ -40,7 +40,7 @@ export const Calendar: React.FC = () => {
       case 'Fuerza':
         return 'bg-white text-black border-2 border-[#9AC21A]';
       case 'Funcional y Fuerza':
-        return 'bg-gradient-to-r from-white to-[#9AC21A] text-black';
+        return 'bg-gradient-to-r from-[#9AC21A] to-white text-black';
       default:
         return 'bg-gray-100 text-gray-400';
     }
