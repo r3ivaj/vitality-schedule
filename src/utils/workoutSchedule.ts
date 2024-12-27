@@ -7,7 +7,7 @@ export const workoutSchedule: WeekSchedule = {
     Wednesday: { type: 'Funcional', exercise: 'Isometricos' },
     Thursday: { type: 'Fuerza', exercise: 'Upper Body' },
     Friday: { type: 'Funcional', exercise: 'Pliometricos' },
-    Saturday: { type: 'Combinado', exercise: 'Full Body' }
+    Saturday: { type: 'Funcional y Fuerza', exercise: 'Full Body' }
   },
   2: {
     Monday: { type: 'Funcional', exercise: 'Leg Day' },
@@ -15,7 +15,7 @@ export const workoutSchedule: WeekSchedule = {
     Wednesday: { type: 'Funcional', exercise: 'Potencia' },
     Thursday: { type: 'Fuerza', exercise: 'Leg Day' },
     Friday: { type: 'Funcional', exercise: 'Coordinacion y Agilidad' },
-    Saturday: { type: 'Combinado', exercise: 'Full Body' }
+    Saturday: { type: 'Funcional y Fuerza', exercise: 'Full Body' }
   },
   3: {
     Monday: { type: 'Funcional', exercise: 'Upper Body' },
@@ -23,7 +23,7 @@ export const workoutSchedule: WeekSchedule = {
     Wednesday: { type: 'Funcional', exercise: 'Isometricos' },
     Thursday: { type: 'Fuerza', exercise: 'Upper Body' },
     Friday: { type: 'Funcional', exercise: 'Pliometricos' },
-    Saturday: { type: 'Combinado', exercise: 'Full Body' }
+    Saturday: { type: 'Funcional y Fuerza', exercise: 'Full Body' }
   },
   4: {
     Monday: { type: 'Funcional', exercise: 'Leg Day' },
@@ -31,6 +31,6 @@ export const workoutSchedule: WeekSchedule = {
     Wednesday: { type: 'Funcional', exercise: 'Potencia' },
     Thursday: { type: 'Fuerza', exercise: 'Leg Day' },
     Friday: { type: 'Funcional', exercise: 'Coordinacion y Agilidad' },
-    Saturday: { type: 'Combinado', exercise: 'Full Body' }
+    Saturday: { type: 'Funcional y Fuerza', exercise: 'Full Body' }
   }
 };

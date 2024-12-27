@@ -1,7 +1,7 @@
 export type WorkoutType = 
   | 'Funcional'  
   | 'Fuerza'    
-  | 'Combinado'    
+  | 'Funcional y Fuerza'    
   | 'Descanso';   
 
 export type ExerciseType =

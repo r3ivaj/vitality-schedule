@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 import { WorkoutCard } from '../components/WorkoutCard';
 import { getWorkoutForDate, getWorkoutSchedule } from '../utils/dateUtils';
-import { isBefore } from 'date-fns';
+import { isSameDay } from 'date-fns';
 
 export const Home: React.FC = () => {
   const { today } = getWorkoutSchedule(new Date());
-  const daysOfWeek = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+  const daysOfWeek = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   
   return (
     <div className="min-h-screen bg-gray-100">
@@ -24,7 +24,7 @@ export const Home: React.FC = () => {
         </div>
         <h2 className="text-2xl font-bold text-black mb-6">Vista rápida</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          <WorkoutCard title="Hoy" workout={today} />
+          <WorkoutCard title="Hoy" workout={today} isToday={true} />
         </div>
         <div className="mt-8">
           <h2 className="text-2xl font-bold text-black mb-6">Esta semana</h2>
@@ -40,14 +40,14 @@ export const Home: React.FC = () => {
               );
 
               const today = new Date();
-              const isBeforeToday = isBefore(date, today);
+              const isToday = isSameDay(date, today);
 
               return (
                 <div key={day} className="h-full">
                   <WorkoutCard 
                     title={day} 
                     workout={workout}
-                    opacity={isBeforeToday ? 'opacity-50' : 'opacity-100'}
+                    isToday={isToday}
                   />
                 </div>
               );

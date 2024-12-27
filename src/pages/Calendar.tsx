@@ -36,10 +36,10 @@ export const Calendar: React.FC = () => {
   const getWorkoutColor = (workout: ReturnType<typeof getWorkoutForDate>) => {
     switch (workout.type) {
       case 'Funcional':
-        return 'bg-white text-black border-2 border-[#9AC21A]';
-      case 'Fuerza':
         return 'bg-[#9AC21A] text-white';
-      case 'Combinado':
+      case 'Fuerza':
+        return 'bg-white text-black border-2 border-[#9AC21A]';
+      case 'Funcional y Fuerza':
         return 'bg-gradient-to-r from-white to-[#9AC21A] text-black';
       default:
         return 'bg-gray-100 text-gray-400';
