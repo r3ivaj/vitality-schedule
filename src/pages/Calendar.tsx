@@ -133,7 +133,7 @@ export const Calendar: React.FC = () => {
       {modalVisible && selectedDate && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">{format(selectedDate, 'EEEE, d MMMM', { locale: es })}</h2>
+            <h2 className="text-2xl font-bold mb-4">{format(selectedDate, 'EEEE, d \'de\' MMMM', { locale: es }).replace(/^\w/, c => c.toUpperCase())}</h2>
             <div className="flex flex-col gap-2">
               <p>Tipo de entrenamiento: {getWorkoutForDate(selectedDate).type}</p>
               <p>Ejercicio: {getWorkoutForDate(selectedDate).exercise}</p>
