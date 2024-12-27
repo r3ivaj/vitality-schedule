@@ -1,8 +1,8 @@
 export type WorkoutType = 
-  | 'Functional'  
-  | 'Strength'    
-  | 'Combined'    
-  | 'Rest Day';   
+  | 'Funcional'  
+  | 'Fuerza'    
+  | 'Combinado'    
+  | 'Descanso';   
 
 export type ExerciseType =
   | 'Upper Body'
@@ -11,7 +11,8 @@ export type ExerciseType =
   | 'Pliometricos'
   | 'Full Body'
   | 'Potencia'
-  | 'Coordinacion y Agilidad';
+  | 'Coordinacion y Agilidad'
+  | '';
 
 export interface WorkoutDetails {
   type: WorkoutType;

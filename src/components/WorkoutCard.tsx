@@ -10,11 +10,11 @@ interface WorkoutCardProps {
 export const WorkoutCard: React.FC<WorkoutCardProps> = ({ title, workout, opacity = 'opacity-100' }) => {
   const getWorkoutStyle = (type: WorkoutType) => {
     switch (type) {
-      case 'Functional':
+      case 'Funcional':
         return 'bg-white text-black border-2 border-[#9AC21A]';
-      case 'Strength':
+      case 'Fuerza':
         return 'bg-[#9AC21A] text-white';
-      case 'Combined':
+      case 'Combinado':
         return 'bg-gradient-to-r from-white to-[#9AC21A] text-black';
       default:
         return 'bg-gray-100 text-gray-400';

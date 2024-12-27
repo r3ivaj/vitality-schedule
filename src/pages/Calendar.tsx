@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getWorkoutForDate } from '../utils/dateUtils';
 import { format, addMonths, subMonths, isBefore, startOfMonth, isSameMonth } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 export const Calendar: React.FC = () => {
   const today = new Date();
@@ -27,12 +28,12 @@ export const Calendar: React.FC = () => {
 
   const getWorkoutColor = (workout: ReturnType<typeof getWorkoutForDate>) => {
     switch (workout.type) {
-      case 'Functional':
+      case 'Funcional':
         return 'bg-white text-black border-2 border-[#9AC21A]';
-      case 'Strength':
+      case 'Fuerza':
         return 'bg-[#9AC21A] text-white';
-      case 'Combined':
-        return 'bg-gradient-to-r from-[#9AC21A] to-white text-black';
+      case 'Combinado':
+        return 'bg-gradient-to-r from-white to-[#9AC21A] text-black';
       default:
         return 'bg-gray-100 text-gray-400';
     }
@@ -41,22 +42,22 @@ export const Calendar: React.FC = () => {
   const isPreviousMonthDisabled = isSameMonth(currentDate, today);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-2 md:p-8">
       <div className="container mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div className="flex items-center justify-between md:justify-start gap-4 mb-4 md:mb-0">
             <Link
               to="/"
               className="flex items-center gap-2 text-black hover:text-[#9AC21A] transition-colors"
             >
               <ArrowLeft size={24} />
-              <span>Back</span>
+              <span>Inicio</span>
             </Link>
             <h1 className="text-3xl font-bold text-[#9AC21A]">
-              {format(currentDate, 'MMMM yyyy')}
+              {format(currentDate, 'MMMM yyyy', { locale: es }).replace(/^\w/, c => c.toUpperCase())}
             </h1>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-center">
             <button
               onClick={handlePreviousMonth}
               disabled={isPreviousMonthDisabled}
@@ -67,29 +68,27 @@ export const Calendar: React.FC = () => {
               }`}
             >
               <ChevronLeft size={20} />
-              Previous
+              Anterior
             </button>
-            {!isSameMonth(currentDate, today) && (
-              <button
-                onClick={() => setCurrentDate(today)}
-                className="px-4 py-2 text-sm bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
-              >
-                Today
-              </button>
-            )}
+            <button
+              onClick={() => setCurrentDate(today)}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-black transition-colors"
+            >
+              Mes actual
+            </button>
             <button
               onClick={handleNextMonth}
               className="flex items-center gap-2 px-4 py-2 bg-[#9AC21A] text-white rounded-lg hover:bg-[#8ab118] transition-colors"
             >
-              Next
+              Siguiente
               <ChevronRight size={20} />
             </button>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <div className="grid grid-cols-7 gap-4">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+        <div className="bg-white rounded-lg shadow-lg p-2 md:p-6">
+          <div className="grid grid-cols-7 gap-2 md:gap-4">
+            {['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'].map(day => (
               <div key={day} className="font-bold text-center text-gray-600">
                 {day}
               </div>
@@ -102,20 +101,19 @@ export const Calendar: React.FC = () => {
             {dates.map(date => {
               const workout = getWorkoutForDate(date);
               const isToday = isSameMonth(date, today) && date.getDate() === today.getDate();
-              const isPast = isBefore(date, startOfMonth(today));
               
               return (
                 <div
                   key={date.getDate()}
-                  className={`p-2 rounded-lg ${
-                    isToday ? 'ring-2 ring-[#9AC21A] ring-offset-2' : ''
-                  } ${isPast ? 'opacity-50' : ''}`}
+                  className={`md:p-2 rounded-lg ${
+                    isToday ? 'ring-2 ring-[#030b08] ring-offset-2' : ''
+                  }`}
                 >
                   <div className="text-sm font-semibold mb-1">{date.getDate()}</div>
                   <div className={`text-xs p-1 rounded ${getWorkoutColor(workout)}`}>
-                    <div>{workout.type}</div>
+                    <div className="hidden md:block">{workout.type}</div>
                     {workout.exercise && (
-                      <div className="text-xs mt-1 opacity-75">{workout.exercise}</div>
+                      <div className="text-xs mt-1 truncate overflow-hidden text-ellipsis">{workout.exercise}</div>
                     )}
                   </div>
                 </div>

@@ -7,15 +7,15 @@ export const getWeekOfMonth = (date: Date): number => {
   return weekNum > 4 ? 4 : weekNum;
 };
 
-export const getWorkoutForDate = (date: Date): WorkoutDetails | { type: 'Rest Day', exercise: '' } => {
+export const getWorkoutForDate = (date: Date): WorkoutDetails | { type: 'Descanso', exercise: '' } => {
   const weekOfMonth = getWeekOfMonth(date);
   const dayName = format(date, 'EEEE');
   
   if (dayName === 'Sunday') {
-    return { type: 'Rest Day', exercise: '' };
+    return { type: 'Descanso', exercise: '' };
   }
   
-  return workoutSchedule[weekOfMonth]?.[dayName] || { type: 'Rest Day', exercise: '' };
+  return workoutSchedule[weekOfMonth]?.[dayName] || { type: 'Descanso', exercise: '' };
 };
 
 export const getWorkoutSchedule = (date: Date) => {
