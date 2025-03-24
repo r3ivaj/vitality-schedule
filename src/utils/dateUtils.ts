@@ -24,7 +24,7 @@ export const getWorkoutForDate = (date: Date): WorkoutDetails => {
       
       // If it's March 29th or every 3 weeks after that date
       if (weeksSinceMarch29 % 3 === 0) {
-        return { type: 'Funcional', exercise: 'Isometricos' };
+        return { type: 'Funcional y Fuerza', exercise: 'Isometricos' };
       }
     }
   }
