@@ -10,15 +10,11 @@ export const getWeekNumber = (date: Date): number => {
   return weekNumber;
 };
 
-export const getWorkoutForDate = (date: Date): WorkoutDetails | { type: 'Descanso', exercise: '' } => {
+export const getWorkoutForDate = (date: Date): WorkoutDetails => {
   const weekNumber = getWeekNumber(date);
   const dayName = format(date, 'EEEE');
   
-  if (dayName === 'Sunday') {
-    return { type: 'Descanso', exercise: '' };
-  }
-  
-  return workoutSchedule[weekNumber]?.[dayName] || { type: 'Descanso', exercise: '' };
+  return workoutSchedule[weekNumber]?.[dayName];
 };
 
 export const getWorkoutSchedule = (date: Date) => {
